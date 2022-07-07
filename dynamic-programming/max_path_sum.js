@@ -64,6 +64,9 @@ const grid = [
 maxPathSum(grid); // -> 56
 */
 
+// using -Infinity in base case because I want to return maxSum, -Infinity is good return
+// value since I will never return that in any possible case so return that if I'm out of bounds.
+
 const maxPathSum = (grid, r=0, c=0) => {
     if(r === grid.length || c === grid[0].length) return -Infinity;
     if(r === grid.length - 1 && c === grid[0].length - 1) return grid[r][c];
