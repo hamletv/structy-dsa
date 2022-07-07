@@ -23,14 +23,35 @@ test_08:
 minChange(0, []); // -> 0
 */
 
+// const minChange = (amount, coins) => {
+//     if(amount === 0) return 0;
+//     if(amount < 0) return Infinity;
+
+//     let minCoins = Infinity;
+//     for(let coin of coins){
+//         const numCoins = 1 + minChange(amount - coin, coins);
+//         minCoins = Math.min(minCoins, numCoins);
+//     }
+//     return minCoins;
+// };
+
 const minChange = (amount, coins) => {
+    const result = _minChange(amount, coins, memo={});
+    return result === Infinity ? -1 : result;
+};
+
+const _minChange = (amount, coins, memo={}) => {
     if(amount === 0) return 0;
+    if(amount in memo) return memo[amount];
     if(amount < 0) return Infinity;
 
     let minCoins = Infinity;
     for(let coin of coins){
-        const numCoins = 1 + minChange(amount - coin, coins);
+        const numCoins = 1 + _minChange(amount - coin, coins, memo);
         minCoins = Math.min(minCoins, numCoins);
     }
+    memo[amount] = minCoins;
     return minCoins;
 };
+
+console.log(minChange(200, [1, 5, 10, 25]))
