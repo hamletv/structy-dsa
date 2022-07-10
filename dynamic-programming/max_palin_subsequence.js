@@ -24,7 +24,7 @@ maxPalinSubsequence("enamelpinportlandtildecoldpressedironyflannelsemioticsediso
 const maxPalinSubsequence = (string, i=0, j=string.length - 1) => {
     if(i === j) return 1;
     if(i > j) return 0;
-    if(string[i] === string[j]){
+    if(string[i] === string[j]) {
         return 2 + maxPalinSubsequence(string, i+1, j-1);
     } else {
         return Math.max(
@@ -32,7 +32,24 @@ const maxPalinSubsequence = (string, i=0, j=string.length - 1) => {
             maxPalinSubsequence(string, i, j-1)
         )
     }
-}
+};
 
 
-console.log(maxPalinSubsequence("luwxult"))
+const maxPalinSubsequenceMemo = (string, i=0, j=string.length - 1, memo={}) => {
+    const key = `${i},${j}`;
+    if(key in memo) return memo[key];
+    if(i === j) return 1;
+    if(i > j) return 0;
+    if(string[i] === string[j]) {
+        memo[key] = 2 + maxPalinSubsequenceMemo(string, i+1, j-1, memo);
+    } else {
+        memo[key] = Math.max(maxPalinSubsequenceMemo(string, i+1, j, memo),
+        maxPalinSubsequenceMemo(string, i, j-1, memo)
+        )
+    }
+    return memo[key];
+};
+
+
+console.log(maxPalinSubsequence("luwxult"));
+console.log(maxPalinSubsequenceMemo("qwueoiuahsdjnweuueueunasdnmnqweuzqwerty"));
