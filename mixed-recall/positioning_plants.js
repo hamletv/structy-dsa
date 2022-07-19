@@ -100,3 +100,40 @@ const positioningPlants = (costs, pos=0, prevPlant=null) => {
     }
     return min;
 };
+
+
+const positioningPlantsMemo = (costs, pos=0, prevPlant=null, memo={}) => {
+    const key = `${pos},${prevPlant}`;
+    if(pos === costs.length) return 0;
+    if(key in memo) return memo[key];
+
+    let min = Infinity;
+    for(let plant = 0; plant < costs[pos].length; plant++){
+        if(plant !== prevPlant){
+            const candidate = costs[pos][plant] + positioningPlantsMemo(costs, pos+1, plant, memo);
+            min = Math.min(min, candidate);
+        }
+    }
+    memo[key] = min;
+    return memo[key];
+};
+
+
+console.log(positioningPlantsMemo([
+    [12, 14, 50, 12],
+    [6, 3, 20, 3],
+    [24, 12, 7, 2],
+    [4, 80, 45, 3],
+    [104, 13, 5, 14],
+    [38, 19, 7, 6],
+    [1, 20, 1, 2],
+    [13, 12, 5, 13],
+    [60, 32, 20, 3],
+    [24, 12, 7, 2],
+    [4, 80, 44, 1],
+    [104, 13, 5, 14],
+    [38, 19, 76, 6],
+    [12, 23, 12, 20],
+    [1, 3, 1, 1],
+    [1, 2, 12, 5],
+  ]))
