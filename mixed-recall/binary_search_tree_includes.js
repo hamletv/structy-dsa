@@ -76,3 +76,7 @@ const binarySearchTreeIncludes = (root, target) => {
     if(target < root.val) return binarySearchTreeIncludes(root.left, target);
     else return binarySearchTreeIncludes(root.right, target);
 };
+
+// Time space, complexity:
+// Time - O(log n) BST is being split in half with every search.
+// Space - O(n) recursive stack is being used
