@@ -71,7 +71,7 @@ binarySearchTreeIncludes(q, 100); // -> false
 
 
 const binarySearchTreeIncludes = (root, target) => {
-    if(root === null) return null;
+    if(root === null) return false;
     if(root.val === target) return true;
     if(target < root.val) return binarySearchTreeIncludes(root.left, target);
     else return binarySearchTreeIncludes(root.right, target);
