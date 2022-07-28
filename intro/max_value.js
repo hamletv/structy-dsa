@@ -28,3 +28,6 @@ const maxValue = numbers => {
     }
     return maxVal;
 };
+
+// Time complexity: O(n) - need to iterate through entire numbers array.
+// Space complexity: O(1) - only 1 variable declared, no additional data structures.
