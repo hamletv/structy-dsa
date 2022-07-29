@@ -44,3 +44,6 @@ const pairSumMap = (numbers, target) => {
 }
 
 console.log(pairSumMap([6, 4, 2, 8 ], 12))
+
+// Time Complexity: O(n) - iterating over numbers array.
+// Space Complexity: O(n) - created object and adde into it.

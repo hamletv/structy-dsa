@@ -40,3 +40,7 @@ const pairProductMap = (numbers, target) => {
     }
     return map;
 };
+
+
+// Time Complexity: O(n) - iterating over numbers array.
+// Space Complexity: O(n) - created object and adde into it.
