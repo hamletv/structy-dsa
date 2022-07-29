@@ -41,3 +41,6 @@ const anagrams2 = (s1, s2) => {
     }
     return true;
 };
+
+// Time Complexity: O(s1+s2) - worst case scenario strings are not the same and need to loop over 2 strings of different lengths.
+// Space Complexity: O(n) - object data structure declared, equivalent to length of one string.
