@@ -38,3 +38,6 @@ const mostFrequentChar = (string) => {
     }
     return output;
 };
+
+// Time Complexity: O(n) - iterating over entire string.
+// Space Complexity: O(n) - declared object and adding into it.
